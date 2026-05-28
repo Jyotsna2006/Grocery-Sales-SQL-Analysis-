@@ -93,7 +93,7 @@ Cleans the entry data by collapsing redundant variables ('LF', 'low fat', and 'r
 -- 3. Post-cleaning column validation check
 SELECT DISTINCT Item_Fat_Content FROM [Grocery Data];
 ```
-![](DataCleaning.png)
+![](DataCleaning.png)  
 Executes a distinct scan across the column to confirm all variations have been successfully overwritten into the two official structural categories.
 
 ### Phase 2: Global Key Performance Indicators (KPIs)
