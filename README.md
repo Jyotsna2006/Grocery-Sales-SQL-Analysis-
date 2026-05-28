@@ -93,6 +93,7 @@ Cleans the entry data by collapsing redundant variables ('LF', 'low fat', and 'r
 -- 3. Post-cleaning column validation check
 SELECT DISTINCT Item_Fat_Content FROM [Grocery Data];
 ```
+![](DataCleaning.png)
 Executes a distinct scan across the column to confirm all variations have been successfully overwritten into the two official structural categories.
 
 ### Phase 2: Global Key Performance Indicators (KPIs)
@@ -248,7 +249,18 @@ ORDER BY Total_Sales DESC;
 ```
 ![](Operational_Business_Layout.png)
 
+## Key Learnings
 
+* **Logical Structuring Workflow**: Mastered how to structure a long, complex corporate SQL script cleanly into sequentially dependent data discovery phases.
+* **Advanced Engine Operations**: Gained practical intuition using intermediate-to-advanced tools like PIVOT and partitionless window functions (OVER()).
+* **Clean Corporate Delivery**: Learned how to properly translate raw numbers into clean commercial structures using safe text concatenation (CONCAT) and numeric formatting shortcuts.
+* **Analytical Reasoning**: Built strong data-profiling skills by mapping raw transactional lines directly to performance strategies for inventory or store setups.
+
+---
+
+## Conclusion
+
+This analysis demonstrates the efficiency of using optimized relational queries for retail business intelligence. By transforming over 8,500 unorganized entry strings into isolated summary vectors, this project serves as a clean, highly scannable database decision-support system tailored perfectly for retail analytics portfolio inspection.
 
 
 
