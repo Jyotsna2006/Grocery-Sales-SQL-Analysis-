@@ -199,8 +199,20 @@ ORDER BY Total_Sales DESC;
 ```
 ![](Timeline_Matrix.png)
 
-
-
+### Phase 4: Advanced Window Function Contribution Analysis
+**I. Revenue Share Matrix by Physical Store Layout Size**  
+Utilizes an advanced partitionless window function calculation to process the grand revenue total inline, allowing the script to calculate the exact percentage market share contribution of Small, Medium, and High store sizes inside a single execution phase.
+```sql
+-- I. Revenue Share Matrix by Physical Store Layout Size
+SELECT 
+    Outlet_Size, 
+    CAST(SUM(Total_Sales) AS DECIMAL(10,2)) AS Total_Sales,
+    CAST((SUM(Total_Sales) * 100.0 / SUM(SUM(Total_Sales)) OVER()) AS DECIMAL(10,2)) AS Sales_Percentage
+FROM [Grocery Data]
+GROUP BY Outlet_Size
+ORDER BY Total_Sales DESC;
+```
+![](Revenue_Share_Matrix_by_Physical_Store_Layout_Size.png)
 
 
 
