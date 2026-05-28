@@ -128,7 +128,7 @@ SELECT CAST(AVG(Rating) AS DECIMAL(10,1)) AS Avg_Rating
 FROM [Grocery Data];
 
 ```
-![KPIOutputs.png](KPIOutputs.png)
+
 
 
 
