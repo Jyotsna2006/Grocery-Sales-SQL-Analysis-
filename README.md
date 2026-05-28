@@ -214,7 +214,22 @@ ORDER BY Total_Sales DESC;
 ```
 ![](Revenue_Share_Matrix_by_Physical_Store_Layout_Size.png)
 
+**II. Market Contribution Metrics by Regional Geographic Tiers**  
+Measures market concentration footprints across different demographic tiers, parsing baseline values alongside contribution weights via inline window function summaries.
+```sql
+-- II. Market Contribution Metrics by Regional Geographic Tiers
+SELECT Outlet_Location_Type,
+    CAST(SUM(Total_Sales) AS DECIMAL(10,2)) AS Total_Sales,
+    CAST((SUM(Total_Sales) * 100.0 / SUM(SUM(Total_Sales)) OVER()) AS DECIMAL(10,2)) AS Sales_Percentage,
+    CAST(AVG(Total_Sales) AS DECIMAL(10,1)) AS Avg_Sales,
+    COUNT(*) AS No_Of_Items, 
+    CAST(AVG(Rating) AS DECIMAL(10,2)) AS Avg_Rating
+FROM [Grocery Data]
+GROUP BY Outlet_Location_Type
+ORDER BY Total_Sales DESC;
+```
 
+![](Market_Contribution_Metrics_by_Regional_Geographic_Tiers.png)
 
 
 
