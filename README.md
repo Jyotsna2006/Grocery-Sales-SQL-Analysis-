@@ -132,7 +132,7 @@ FROM [Grocery Data];
 ![](KPIOutputs.png)
 
 ### Phase 3: Granular Segmentation & Business Deep-Dives
-A. Total Sales Distribution by Fat Content
+**A. Total Sales Distribution by Fat Content**  
 Profiles how raw monetary revenue behaves when split across core product fat attributes.
 ```sql
 SELECT Item_Fat_Content, 
@@ -146,7 +146,20 @@ ORDER BY Total_Sales_Thousands DESC;
 ```
 ![](Total_Sales_Distribution_by_Fat_Content.png)
 
-
+**B. Total Sales Performance by Item Type Category**  
+Isolates individual product lines sorted from highest performing to lowest to streamline shelf inventory space.
+```sql
+-- B. Product Analysis: Top 5 Highest Performing Item Categories (FIXED SORT)
+SELECT TOP 5 Item_Type,
+    CAST(SUM(Total_Sales) AS DECIMAL(10,2)) AS Total_Sales,
+    CAST(AVG(Total_Sales) AS DECIMAL(10,1)) AS Avg_Sales,
+    COUNT(*) AS No_Of_Items, 
+    CAST(AVG(Rating) AS DECIMAL(10,2)) AS Avg_Rating    
+FROM [Grocery Data]
+GROUP BY Item_Type
+ORDER BY Total_Sales DESC; -- Fixed from ASC to capture true top performers
+```
+![](Total_Sales_Performance_by_Item_Type_Category.png)
 
 
 
