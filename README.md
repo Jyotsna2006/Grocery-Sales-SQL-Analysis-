@@ -161,6 +161,45 @@ ORDER BY Total_Sales DESC; -- Fixed from ASC to capture true top performers
 ```
 ![](Total_Sales_Performance_by_Item_Type_Category.png)
 
+**C. Subquery & PIVOT: Sales Matrix by Region Tier and Fat Type**  
+Restructures transactional layout lines using an inner grouping subquery combined with a database PIVOT clause to output geographical region tiers as rows and fat groupings horizontally as clean columns, utilizing ISNULL to safe-format missing cells to zero.
+```sql
+-- C. Subquery & PIVOT: Sales Matrix by Region Tier and Fat Type
+SELECT Outlet_Location_Type, 
+       ISNULL([Low Fat], 0) AS Low_Fat, 
+       ISNULL([Regular], 0) AS Regular
+FROM 
+(
+    SELECT Outlet_Location_Type, Item_Fat_Content, 
+           CAST(SUM(Total_Sales) AS DECIMAL(10,2)) AS Total_Sales
+    FROM [Grocery Data]
+    GROUP BY Outlet_Location_Type, Item_Fat_Content
+) AS SourceTable
+PIVOT 
+(
+    SUM(Total_Sales) 
+    FOR Item_Fat_Content IN ([Low Fat], [Regular])
+) AS PivotTable
+ORDER BY Outlet_Location_Type;
+```
+![](Subquery_and_pivot.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
