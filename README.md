@@ -184,9 +184,20 @@ ORDER BY Outlet_Location_Type;
 ```
 ![](Subquery_and_pivot.png)
 
-
-
-
+**D. Timeline Matrix: Performance Trend by Outlet Launch Year**  
+Evaluates historical development trajectories and long-term financial health by grouping total revenue and feedback metrics by initial store launching years.
+```sql
+-- D. Timeline Matrix: Performance Trend by Outlet Launch Year
+SELECT Outlet_Establishment_Year,
+    CAST(SUM(Total_Sales) AS DECIMAL(10,2)) AS Total_Sales,
+    CAST(AVG(Total_Sales) AS DECIMAL(10,1)) AS Avg_Sales,
+    COUNT(*) AS No_Of_Items, 
+    CAST(AVG(Rating) AS DECIMAL(10,2)) AS Avg_Rating
+FROM [Grocery Data]
+GROUP BY Outlet_Establishment_Year
+ORDER BY Total_Sales DESC;
+```
+![](Timeline_Matrix.png)
 
 
 
