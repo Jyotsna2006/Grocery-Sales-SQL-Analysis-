@@ -231,7 +231,22 @@ ORDER BY Total_Sales DESC;
 
 ![](Market_Contribution_Metrics_by_Regional_Geographic_Tiers.png)
 
-
+**III. Complete Competitive Landscape Breakdown by Operational Business Layout**  
+Generates a comprehensive summary across all distinct commercial store layout styles. Tracks financial output totals, averages, visibility ratios, counts, and customer feedback fields in a single query block to outline operational landscapes.
+```sql
+-- III. Complete Competitive Landscape Breakdown by Operational Business Layout
+SELECT Outlet_Type, 
+    CAST(SUM(Total_Sales) AS DECIMAL(10,2)) AS Total_Sales,
+    CAST(AVG(Total_Sales) AS DECIMAL(10,0)) AS Avg_Sales,
+    CAST((SUM(Total_Sales) * 100.0 / SUM(SUM(Total_Sales)) OVER()) AS DECIMAL(10,2)) AS Sales_Percentage,
+    COUNT(*) AS No_Of_Items,
+    CAST(AVG(Rating) AS DECIMAL(10,2)) AS Avg_Rating,
+    CAST(AVG(Item_Visibility) AS DECIMAL(10,2)) AS Item_Visibility
+FROM [Grocery Data]
+GROUP BY Outlet_Type
+ORDER BY Total_Sales DESC;
+```
+![](Operational_Business_Layout.png)
 
 
 
