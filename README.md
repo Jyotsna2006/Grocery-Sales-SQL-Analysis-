@@ -131,9 +131,20 @@ FROM [Grocery Data];
 
 ![](KPIOutputs.png)
 
-
-
-
+### Phase 3: Granular Segmentation & Business Deep-Dives
+A. Total Sales Distribution by Fat Content
+Profiles how raw monetary revenue behaves when split across core product fat attributes.
+```sql
+SELECT Item_Fat_Content, 
+    CONCAT(CAST(SUM(Total_Sales)/1000.0 AS DECIMAL(10,0)), 'K') AS Total_Sales_Thousands,
+    CAST(AVG(Total_Sales) AS DECIMAL(10,1)) AS Avg_Sales,
+    COUNT(*) AS No_Of_Items, 
+    CAST(AVG(Rating) AS DECIMAL(10,2)) AS Avg_Rating
+FROM [Grocery Data]
+GROUP BY Item_Fat_Content
+ORDER BY Total_Sales_Thousands DESC;
+```
+![](Total_Sales_Distribution_by_Fat_Content.png)
 
 
 
