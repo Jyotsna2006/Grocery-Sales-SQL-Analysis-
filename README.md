@@ -129,7 +129,7 @@ FROM [Grocery Data];
 
 ```
 
-
+![](KPIOutputs.png)
 
 
 
